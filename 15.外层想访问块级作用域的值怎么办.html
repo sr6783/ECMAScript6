@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //本质上，块级作用域是一个语句，将多个操作封装在一起，没有返回值。
+    {
+        function f() {
+            return 2;
+        }
+        let t = f();
+        t = t * t + 1;
+        console.log(t);
+    }
+    //上面代码,块级作用域将2个语句封装在一起,但是,在块级作用域以外,没有办法得到t的值,因为块级作用域不返回值,想要使用t的值,怎么办?
+    //让块级作用域变成一个表达式,也就是说可以有返回值,办酒就是在块级作用域前加do,使他变成do表达式
+    let x = do {
+        let t = f();
+         t * t + 1;
+    }
+    console.log(x);
+</script>
+</body>
+</html>

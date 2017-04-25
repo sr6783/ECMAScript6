@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let不存在变量提示</title>
+</head>
+<body>
+<script>
+   /* let不存在变量提示,所以要先声明后使用,否则报错*/
+   //同样的,代码验证理论
+    //var情况
+    console.log(foo);     //undefined
+    var foo = 2;
+
+    console.log(bar);     //ReferenceError: bar is not defined
+    let bar = 3;
+    //因为var 有变量提升
+    /*
+    * var foo
+    * console.log(foo);
+    * foo = 2;
+    *
+    *验证是否变量提升,就先打印,再声明赋值
+    * if 打印结果undefined  说明有变量提升
+    * else xxx is not defined 没有变量提升
+    * */
+</script>
+
+</body>
+</html>

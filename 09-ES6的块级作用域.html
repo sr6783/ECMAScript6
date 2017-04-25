@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let实际上为JavaScript新增了块级作用域</title>
+</head>
+<body>
+<script>
+    function f1(){
+        let n = 5;
+        if(true) {
+            let n = 10;
+        }
+        console.log(n);
+    }
+
+    function f2 () {
+        var n = 5;
+        if(true) {
+            var n = 10;
+        }
+        console.log(n);
+    }
+    f1();   //5
+    f2();   //10
+    //内外层互不污染
+</script>
+</body>
+</html>

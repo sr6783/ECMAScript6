@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    第一种场景:内层变量可能覆盖外层变量
+    var tmp = new Date();
+
+    function f() {
+        console.log(tmp);
+        if(false){
+            var tmp = 'hello world';
+        }
+    }
+    f();  //不是时间 是undefined
+    /*
+    解析过程:
+     function f() {
+        var tmp;
+        console.log(tmp);
+        if(false){
+            tmp = 'hello world';
+        }
+     }
+    */
+    //循环语句中用var声明的变量会提升
+</script>
+</body>
+</html>

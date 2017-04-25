@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let使用</title>
+</head>
+<body>
+<script>
+/*
+    {
+        let a=10;
+        var b=5;
+        console.log(a);     //10
+    }
+    console.log(a);         // a is not defined
+    console.log(b);
+    */
+
+    //for循环的计数器,就很适合使用let命令
+    var a = [];
+   /* for (var i = 0; i < 10; i++) {
+        a[i] = function () {
+            console.log(i);
+        }
+    }
+    a[6]();     //10 打印的i都是最终循环完全局中的i*/
+
+    for(let i = 0; i < 10; i++){
+        a[i] = function() {
+        console.log(i);
+        }
+    }
+    a[6]();      //6
+    //为什么?
+    /*
+    * 用var声明的变量没有块级作用域,也就是在当前作用域内都有效,所以每次循环,新的i值是对旧的值的覆盖
+    * 用let声明的变量,每次循环的i其实都是一个新的变量,注意是新的变量,而不是值的覆盖,每一次循环的变量都是重新声明的
+    * 那循环怎么知道上一轮循环的值,从而计算出本轮的值?
+    * 这是因为JS引擎内部h会记住上一轮循环的值,声明本轮的值时候,在上一轮循环的基础上进行计算*/
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //在ES5中,函数只能在顶层作用域和函数作用域中声明,不能在块级作用域中声明
+    /*
+    //情况一
+    if(true){
+        function f(){}
+    }
+    //情况二
+    try {
+    function f() {}
+    }catch(e){
+    }
+    */
+    //上面代码的两种函数声明，根据ES5的规定都是非法的。
+    //但是，浏览器没有遵守这个规定，为了兼容以前的旧代码，还是支持在块级作用域之中声明函数，因此上面两种情况实际都能运行，不会报错。不过，“严格模式”下还是会报错。
+
+</script>
+</body>
+</html>

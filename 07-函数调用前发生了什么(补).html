@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    (function foo(i) {
+        if (i === 3) {
+            console.log("true");
+            return;
+        }
+        else {
+            console.log(i);
+            foo(++i);
+        }
+    }(0));
+    // 0 1 2 true
+
+
+
+    function foo(i) {
+        var a = 'hello';
+        var b = function privateB() {
+        };
+        function c() {
+        }
+    }
+    foo(22);
+
+    /*
+    函数被调用执行内部执行的过程
+    1.被调用 但还没执行
+    //上下文对象:variable对象,作用域链和this指向的对象都会被确定
+    excutionContextObj = {
+
+        variableObject:{
+            //实参 类数组
+            arguments:{
+                0 : 22
+                length:1
+            },
+            //参数
+            i:22
+            // 内部的函数声明:相同函数名的声明,后面的覆盖前面的值
+            函数名:内存中地址的引用,
+               c : function(){}
+            //内部的变量:相同的变量声明,后面的被跳过
+            变量名:undefined,
+                a : undefined
+                b : undefined
+            //当变量名和函数名冲突的时候,直接跳过变量名,防止函数的属性值被覆盖成undefined
+        }
+        //初始化作用域链
+        scopeChain:{},
+        //当前this的指向
+        this:{}
+    }
+    在这个阶段,除了arguments,函数的声明,以及参数被赋予了具体的值以外,其他变量属性默认都是undefined.
+    注意:只有在代码执行阶段,变量属性才被赋予了具体的值.
+    变量提升和函数提升的实质:就是以上建立阶段
+
+    2.执行代码: 变量赋值,函数引用,执行其他代码
+     */
+
+    //例2
+    (function() {
+        console.log(typeof foo); // function pointer
+        console.log(typeof bar); // undefined
+        var foo = 'hello',
+                bar = function() {
+                    return 'world';
+                };
+        function foo() {
+            return 'hello';
+        }
+    }());
+    /*
+     建立阶段:
+     excutionContextObj = {
+        argument:{},
+        //参数 没有
+        //函数声明
+        foo:function(){},
+        //变量声明 函数声明大于变量声明 foo变干掉
+        bar: undefined,
+        //作用域链
+        scopeChainObj:{},
+        //this指向
+        this:{}
+     }
+
+
+     */
+</script>
+</body>
+</html>

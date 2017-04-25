@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>暂时性死区</title>
+</head>
+<body>
+<script>
+    /*
+
+    只要块级作用域内存在let命令,它所声明的变量就"绑定"这个区域,不再受外部影响
+    ES6明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。
+    总之,在代码块内,使用let命令声明变量之前,该变量都是不可用的.这在语法上,称为"暂时性死区"(temporal dead zone,简称TDZ)
+     */
+    var temp = 123;
+    if(true){
+        tmp = 'abc';  //Uncaught ReferenceError: tmp is not defined
+        let tmp;
+    }
+    //明明temp已经声明了,为什么赋值操作报错,为什么出现这样的情况呢?
+    //答: 在块作用域中,let声明的变量 tmp绑定了这个区块,不再受外部的影响,即使let声明在最底部
+    //好处:这也就是说代码量长的时候,块级作用域中有let声明的变量肯定不会和全局变量发生冲突
+
+</script>
+
+</body>
+</html>

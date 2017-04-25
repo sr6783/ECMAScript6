@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    function bar(x = y ,y = 2){     // y is not defined at bar
+        return[x,y];
+    }
+    bar();
+    */
+
+
+    /*
+    报错的原因是:参数x的默认值等于y,而此时y并没有被声明,属于 "死区"
+    如果y的默认值是x,则不会报错,因为x已经声
+    * */
+    function bar1(x = 2, y = x){
+        return[x,y];
+    }
+    bar1();
+
+/*    let x = x; */         //x is not defined
+    // 为什么 let x = x报错?   不是有2个步骤吗
+    /*
+    * let x;
+    * x = x;
+    * */
+    let y;
+    y = y;
+    console.log(y);         //undefined
+    //这个不报错,说明 let x = x;是同时进行的,不存在2个步骤
+    //暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。
+</script>
+</body>
+</html>

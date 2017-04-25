@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var s = 'hello';
+    for (var i = 0; i < s.length; i++){
+        console.log(s[i]);
+    }
+    console.log(i);   //5
+    //变量i只用来控制循环，但是循环结束后，它并没有消失，泄露成了全局变量。
+</script>
+</body>
+</html>

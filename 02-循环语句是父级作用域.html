@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*for循环的一个特别之处是循环语句部分是父作用域,而循环体内部是一个子作用域*/
+    for(let i = 0;i<3;i++){
+        let i = 'abc';
+        console.log(i);
+    }
+    //这段代码的意义在于:看控制台输出的结果是abc abc abc还是1,2,3就可以验证我们的理论
+    // abc abc abc
+    //这是我们容易忽略的地方,因为以前用循环都是在循环体内直接用arr[i] 而没有重新声明
+    //通过重新声明我们知道了 for内外循环是2个作用域,以前都是因为循环体内部的作用域没有i,才使用循环语句的i
+</script>
+</body>
+</html>

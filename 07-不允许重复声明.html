@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+//    let不允许在同一个作用域内,重复声明同一个变量(
+/*
+    function abc (){
+        let a = 10;
+        var a = 1;
+    }
+*/
+    //webstrom提示我们:Duplicate declaration  重复声明
+    //浏览器报错:Uncaught SyntaxError: Identifier 'a' has already been declared
+
+
+
+    function demo1 (){
+        var a = 10;
+        var a = 1;
+    }
+
+
+
+
+    //用var定义的变量即使重复声明也不会报错:这意味着代码量过大的时候,可能会不经意地覆盖之前定义的变量而我们还不知道
+    //不允许在同一个作用域内重复声明同一个变量意味着:在函数内部重新声明参数也是会报错的
+    function func(arg) {
+        let arg ;  //报错   Identifier 'arg' has already been declared
+    }
+    //那以前的 var event = event 用const event = event就报错了咯
+    //也就是说实参和形参是在一个作用域
+    //所以函数调用时的具体执行步骤是什么?
+    function func1(arg) {
+        {
+            let arg; // 不报错
+        }
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //暂时性死区:let声明的变量,在let声明之前都属于死区,死区代表使用即报错
+    if(true){
+        //TDZ开始
+        //tmp = 'abxc';               //tmp is not defined
+        //console.log(tmp);
+
+        let tmp;        //TDZ结束
+        console.log(tmp);
+
+        tmp = 123;
+        console.log(tmp);
+
+    }
+    //“暂时性死区”也意味着typeof不再是一个百分之百安全的操作。
+    typeof x; // ReferenceError
+    let x;
+
+    //作为比较，如果一个变量根本没有被声明，使用typeof反而不会报错。
+    typeof undeclared_variable; // "undefined"
+    //上面代码中，undeclared_variable是一个不存在的变量名，结果返回“undefined”。所以，在没有let之前，typeof运算符是百分之百安全的，永远不会报错。现在这一点不成立了。这样的设计是为了让大家养成良好的编程习惯，变量一定要在声明之后使用，否则就报错。
+
+</script>
+</body>
+</html>
